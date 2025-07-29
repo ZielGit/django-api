@@ -12,4 +12,5 @@ urlpatterns = [
     path('get/<str:emp_id>/', views.get_employee),
     path('update/<str:emp_id>/', views.update_employee),
     path('delete/<str:emp_id>/', views.delete_employee),
+    path('save-file/', views.save_file),
 ]

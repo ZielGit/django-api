@@ -1,5 +1,8 @@
 */__pycache__/
 __pycache__/
+photos/*.png
+photos/*.jpeg
+photos/*.jpg
 *.log
 db.sqlite3
 .env

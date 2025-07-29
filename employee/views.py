@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from employee.models import Departments, Employees
 import json
+from django.core.files.storage import default_storage
 
 @csrf_exempt
 def create_department(request):
@@ -93,3 +94,10 @@ def delete_employee(request, emp_id):
             return JsonResponse({'message': 'Empleado eliminado'})
         except Employees.DoesNotExist:
             return JsonResponse({'error': 'Empleado no encontrado'}, status=404)
+
+@csrf_exempt
+def save_file(request):
+    if request.method == 'POST':
+        file = request.FILES['file']
+        file_name = default_storage.save(file.name, file)
+        return JsonResponse({'file_name': file_name}, status=201)
