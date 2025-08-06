@@ -17,6 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from django.http import HttpResponse
+from django.conf.urls.static import static
+from django.conf import settings
 
 def home(request):
     return HttpResponse("Bienvenido a mi API")
@@ -26,3 +28,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('employee/', include('employee.urls')),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
